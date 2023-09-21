@@ -35,6 +35,25 @@ dispatch(getproduit())
         <li><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</li>
     </ul>
 </div>
+
+ <div className="modal-container">
+  <input id="modal-toggle" type="checkbox" />
+  <i class="fa-solid fa-plus fa-xl" style={{color:"green"}} ></i>
+   
+  <div class="modal-backdrop">
+    <div class="modal-content">
+      <label class="modal-close" for="modal-toggle">x</label>
+      <input type='text' placeholder='name'onChange={(e)=>setnewprod({...newprod,name:e.target.value})}/>
+      <input type='number' placeholder='Price'onChange={(e)=>setnewprod({...newprod,price:e.target.value})}/>
+      <input type='text' placeholder='Photo'onChange={(e)=>setnewprod({...newprod,photo:e.target.value})}/>
+      <input type='text' placeholder='Description'onChange={(e)=>setnewprod({...newprod,description:e.target.value})}/>
+
+      <button onClick={()=>(dispatch(addproduit(newprod)),setping(!ping))}>ok</button>
+      <label className="modal-close button" for="modal-toggle">Close</label>
+    </div>
+  </div>
+</div>
+
        <div className="table">
                 
                     <tr>
@@ -43,6 +62,7 @@ dispatch(getproduit())
                         <th>Photo</th>
                         <th>Description</th>
                         <th>Actions</th>
+                        
                     </tr> 
                     {produits?.map((el)=>(
                     <tr>
@@ -51,7 +71,6 @@ dispatch(getproduit())
                         <td><img src={el?.photo} /> </td>
                         <td>{el?.description} </td>
                         <td>
-                          <i class="fa-solid fa-plus fa-xl" style={{color:"green"}} onClick={handleShow}></i> 
                                                 <i class="fa-solid fa-trash fa-xl" style={{color:"red"}} onClick={()=>(dispatch(deleteproduit(el._id)),setping(!ping))}></i></td>
 
                     </tr>
@@ -60,16 +79,9 @@ dispatch(getproduit())
      </div>
 
     </div>
-    {show? (
-  <div>
-  <input type='text' placeholder='name'onChange={(e)=>setnewprod({...newprod,name:e.target.value})}/>
-  <input type='number' placeholder='Price'onChange={(e)=>setnewprod({...newprod,price:e.target.value})}/>
-  <input type='text' placeholder='Photo'onChange={(e)=>setnewprod({...newprod,photo:e.target.value})}/>
-  <input type='text' placeholder='Description'onChange={(e)=>setnewprod({...newprod,description:e.target.value})}/>
-  
-  <button onClick={()=>(dispatch(addproduit(newprod)),setping(!ping))}>OK </button>
-  </div>
- ):null}
+    
+   
+ 
     </div>
   )
 }

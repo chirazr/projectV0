@@ -17,6 +17,9 @@ const Navbar = () => {
       <Link to="/list"> <i class="fa-solid fa-cart-shopping fa-2x">
         </i></Link>
         </li> 
+        <li className="nav-item"> 
+      <Link to="/dashbord"> <i class="fa-solid fa-building-shield"></i></Link></li>
+
     </ul>
     </div>
   )
